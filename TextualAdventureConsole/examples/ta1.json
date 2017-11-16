@@ -1,0 +1,81 @@
+{
+  "InitialDescription" : "U sobi ste. Na stolu je papir. Na zidu je sef. Vaš cilj je da otvorite vrata",
+
+  "Rules": {
+    "1": [
+      {
+        "Command": "(Pro[č|c]itaj )?[š|s]ta pi[š|s]e( na papiru)?\\??",
+        "OutState": "1",
+        "SentenceSuccess": "Na papiru piše 96201124"
+      },
+      {
+        "Command": "(Unesi|Ukucaj)( u sef)? 96201124( u sef)?",
+        "OutState": "2",
+        "SentenceSuccess": "Sef je otključan. U sefu se nalazi ključ"
+      },
+      {
+        "Command": "(Ukucaj|Unesi) .*",
+        "OutState": "1",
+        "SentenceSuccess": "Pogrešna šifra"
+      }
+    ],
+    "2": [
+      {
+        "Command": "Uzmi klju[c|č]",
+        "OutState": "3",
+        "SentenceSuccess": "Ključ vam je sada u ruci"
+      }
+    ],
+    "3": [
+      {
+        "Command": "Otklju[c|č]aj vrata( klju[c|č]em| sa klju[c|č]em)?",
+        "OutState": "4",
+        "SentenceSuccess": "Bravo"
+      }
+    ]
+  },
+  "AcceptableStates": [
+    "4"
+  ],
+  "InitialState": "1"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

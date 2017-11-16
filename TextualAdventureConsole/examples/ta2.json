@@ -1,0 +1,74 @@
+{
+  "InitialDescription" : "U sobi ste. Vidite dvoja vrata - leva i desna. Treba da izadjete iz sobe",
+
+  "Rules": {
+    "neotvorena": [
+      {
+        "Command": "Otvori leva( vrata)?",
+        "OutState": "pobeda",
+        "SentenceSuccess": "Bravo. Izašli ste napolje"
+      },
+      {
+        "Command": "Otvori desna( vrata)?",
+        "OutState": "cudoviste pitanje",
+        "SentenceSuccess": "Iza vrata je čudovište. Ako ne odgovorite tačno koji je glavni grad Francuske gubite"
+      }      
+    ],
+    "cudoviste pitanje": [
+      {
+        "Command": "Pariz",
+        "OutState": "neotvorena",
+        "SentenceSuccess": "Izvukli ste se ovaj put"
+      },
+      {
+        "Command": ".*",
+        "OutState": "izgubio",
+        "SentenceSuccess": "Nažalost čudovište vas je pojelo"
+      },    
+    ]
+  },
+  "AcceptableStates": [
+    "pobeda"
+  ],
+  "InitialState": "neotvorena"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,100 @@
+{
+  "InitialDescription" : "Igra je vrlo glupa i sluzi za probu. Komande su A i B. Ako otkucate A 3 puta, pobedili ste. \r\n Ako otkucate B pre nego 3 puta A, izbubili ste",
+
+  "Rules": {
+    "0A": [
+      {
+        "Command": "A",
+        "OutState": "1A",
+        "SentenceSuccess": "Ok"
+      },
+      {
+        "Command": "B",
+        "OutState": "izgubio",
+        "SentenceSuccess": "Izgubili ste"
+      }      
+    ],
+    "1A": [
+      {
+        "Command": "A",
+        "OutState": "2A",
+        "SentenceSuccess": "Ok"
+      },
+      {
+        "Command": "B",
+        "OutState": "izgubio",
+        "SentenceSuccess": "Izgubili ste"
+      }
+    ],
+
+    "2A": [
+      {
+        "Command": "A",
+        "OutState": "3A",
+        "SentenceSuccess": "Ok"
+      },
+      {
+        "Command": "B",
+        "OutState": "izgubio",
+        "SentenceSuccess": "Izgubili ste"
+      }
+    ],
+
+    "3A": [
+      {
+        "Command": "A",
+        "OutState": "3A",
+        "SentenceSuccess": "Ok"
+      },
+      {
+        "Command": "B",
+        "OutState": "pobeda",
+        "SentenceSuccess": "Bravo"
+      }      
+    ],
+  },
+  "AcceptableStates": [
+    "pobeda"
+  ],
+  "InitialState": "0A"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
