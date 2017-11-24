@@ -56,8 +56,6 @@ namespace FiniteAutomata
         {
             Rules = machine;
             InitialState = initialState;
-            if (_state == null)
-                InitialState.Apply(ref _state);
             AcceptableStates = acceptableStates;
             NonAcceptableStates = nonAcceptableStates;
             Compile();
@@ -75,7 +73,7 @@ namespace FiniteAutomata
                 throw new ArgumentException("No initial state");
 
             if (_state==null)
-                InitialState.Apply(ref _state);            
+                _state = InitialState.Apply(_state);            
         }
 
 
@@ -85,7 +83,7 @@ namespace FiniteAutomata
             var recognizedRule = Rules.FirstOrDefault(r => r.Recognize(State,command));
             if (recognizedRule!=null)
             {
-                recognizedRule.OutState.Apply(ref _state);
+                _state = recognizedRule.OutState.Apply(_state);
                 var action = (recognizedRule as IAction);
                 if (action != null)
                     action.Execute();

@@ -74,19 +74,20 @@ namespace TextualAdventureConsole
 
     public class MyState : IState<MyState>
     {
-        public int I { get; set; }
+        public int I { get; protected set; }
 
         public MyState(int i)
         {
             I = i;
         }
 
-        public void Apply(ref MyState state)
+        public MyState Apply(MyState state)
         {
             if (state == null)
                 state = new MyState(this.I);
             else
-                state.I += this.I;
+                state.I = this.I;
+            return state;
         }
 
         public virtual bool Recognize(MyState state)
@@ -98,6 +99,8 @@ namespace TextualAdventureConsole
         {
             return I.ToString();
         }
+
+
     }
 
     public class MyAcceptableState : MyState
@@ -113,7 +116,7 @@ namespace TextualAdventureConsole
     }
 
 
-    public class MyRule : ITransitionRule<MyState>
+    public class MyRule : ITransitionRule<MyState>, IAction
     {
 
         public MyState InState { get; protected set; }
@@ -122,8 +125,13 @@ namespace TextualAdventureConsole
 
         public bool Recognize(MyState state, object command)
         {
-            OutState = new MyState(Convert.ToInt32(command));
+            OutState = new MyState(state.I + Convert.ToInt32(command));
             return true;
+        }
+
+        public void Execute()
+        {
+            if (OutState.I % 10 == 0) Console.Beep();
         }
     }
 

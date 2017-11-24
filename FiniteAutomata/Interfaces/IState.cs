@@ -5,6 +5,14 @@ using System.Text;
 
 namespace FiniteAutomata.Interfaces
 {
+
+    /// <summary>
+    /// The IState is modeled in this manner having partial states in mind.
+    /// Recognize means that class itself is responsible for recognizing the state
+    ///      and applying chanages to current state.
+    /// Doing this way it can cover variety of finite automatas
+    /// </summary>
+    /// <typeparam name="TState"></typeparam>
     public interface IState<TState>
     {
         /// <summary>
@@ -15,9 +23,9 @@ namespace FiniteAutomata.Interfaces
         bool Recognize(TState state);
 
         /// <summary>
-        /// Apply this state to param state
+        /// Apply this state to param state and return applied state
         /// </summary>
         /// <param name="state"></param>
-        void Apply(ref TState state);
+        TState Apply(TState state);
     }
 }

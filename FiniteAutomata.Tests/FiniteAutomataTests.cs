@@ -21,11 +21,11 @@ namespace FiniteAutomata.Tests
         {
             var fssRules = new List<StringTransitionRule>
             {
-                new StringTransitionRule("1","1","one"),
-                new StringTransitionRule("1","2","two"),
-                new StringTransitionRule("2","3","three"),
-                new StringTransitionRule("3","won","win"),
-                new StringTransitionRule("3","lost","lose"),
+                new StringTransitionRule("1","1","one"),    // on 'one' stay in 1
+                new StringTransitionRule("1","2","two"),    // on 'two' 1 transits to 2
+                new StringTransitionRule("2","3","three"),  // on 'three' 2 transits to 3
+                new StringTransitionRule("3","won","win"),  // on 'won' 3 transits to 'win' state
+                new StringTransitionRule("3","lose","lost"),// on 'lose' 3 transits to 'lost' state
             };
 
             var fss = new FiniteAutomata<StringState, StringTransitionRule>("1", fssRules, new StringState[] { "won" }, new StringState[] { "lost" });
@@ -76,6 +76,11 @@ namespace FiniteAutomata.Tests
             Assert.AreEqual(fss.State, new PartialState { { "safe", "open" }, { "key", "taken" }, { "door", "open" } });
             Assert.IsTrue(fss.IsAcceptable());
             Assert.IsTrue(fss.IsFinal());
+        }
+
+        public void FiniteAutomata1()
+        {
+
         }
     }
 

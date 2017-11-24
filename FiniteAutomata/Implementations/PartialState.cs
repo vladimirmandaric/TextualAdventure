@@ -8,12 +8,13 @@ namespace FiniteAutomata.Implementation
 {
     public class PartialState : Dictionary<string, string>, IState<PartialState>
     {
-        public void Apply(ref PartialState state)
+        public PartialState Apply(PartialState state)
         {
             if (state == null)
                 state = new PartialState();
             foreach (var a in this)
                 state[a.Key] = a.Value;
+            return state;
         }
 
         public bool Recognize(PartialState state)

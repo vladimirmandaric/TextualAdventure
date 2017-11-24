@@ -14,9 +14,9 @@ namespace FiniteAutomata.Implementation
             State = state;
         }
 
-        public void Apply(ref StringState state)
+        public StringState Apply(StringState state)
         {
-            state = new StringState(State);
+            return new StringState(State);
         }
 
         public bool Recognize(StringState state)
