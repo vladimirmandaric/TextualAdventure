@@ -7,7 +7,7 @@ namespace FiniteAutomata.Implementation
 {
     public class StringState : Interfaces.IState<StringState>
     {
-        public string State { get; set; }
+        protected string State { get; set; }
 
         public StringState(string state)
         {

@@ -9,13 +9,13 @@ namespace FiniteAutomata.Implementation
 {
     public class StringTransitionRule : ITransitionRule<StringState>
     {
-        public StringState InState { get; set; }
+        protected StringState InState { get; set; }
 
-        public StringState OutState { get; set; }
+        public StringState OutState { get; protected set; }
 
         
 
-        public string Command { get; set; }
+        protected string Command { get; set; }
 
         public StringTransitionRule(StringState inState,  StringState outState, string command)
         {

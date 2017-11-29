@@ -18,10 +18,6 @@ namespace FiniteAutomata
         protected TState _state=default(TState);
 
         /// <summary>
-        /// A finite automata rule consists of state (to be matched with current state) 
-        /// and list of commands which that state supports. In case that finite automata, 
-        /// on execute, recognizes state and command, current state is changed to OutState of command.
-        /// If a rule holds only state, and command is null, it is terminating state rule
         /// </summary>
         public IEnumerable<TTransitionRule> Rules { get; set; }        
 
@@ -62,7 +58,7 @@ namespace FiniteAutomata
         }
 
         /// <summary>
-        /// 
+        /// Check is everything ok; do initial settings
         /// </summary>
         public virtual void Compile()
         {
